@@ -13,54 +13,26 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
-@Entity
 public class MoneyTransfer {
 
-	@NotNull
-	private String xTimeZone;
-	@Id
-	@NotNull
-	private long accountId;
-	@ManyToOne
-	@NotNull
-	private Creditor creditor3;
+	private Creditor creditor;
 	private Date executionDate;
 	private String uri;
-	@NotNull
 	private String description;
-	@NotNull
-	private BigDecimal amount;
-	@NotNull
+	private int amount;
 	private String currency;
 	private boolean isUrgent;
 	private boolean isInstant;
 	private String feeType;
 	private String feeAccountId;
-	@OneToMany(mappedBy = "moneyTransfer")
-	private List<TaxRelief> taxRelief;
-
-	public String getxTimeZone() {
-		return xTimeZone;
-	}
-
-	public void setxTimeZone(String xTimeZone) {
-		this.xTimeZone = xTimeZone;
-	}
-
-	public long getAccountId() {
-		return accountId;
-	}
-
-	public void setAccountId(long accountId) {
-		this.accountId = accountId;
-	}
+	private TaxRelief taxRelief;
 
 	public Creditor getCreditor() {
-		return creditor3;
+		return creditor;
 	}
 
 	public void setCreditor(Creditor creditor) {
-		this.creditor3 = creditor;
+		this.creditor = creditor;
 	}
 
 	public Date getExecutionDate() {
@@ -87,11 +59,11 @@ public class MoneyTransfer {
 		this.description = description;
 	}
 
-	public BigDecimal getAmount() {
+	public int getAmount() {
 		return amount;
 	}
 
-	public void setAmount(BigDecimal amount) {
+	public void setAmount(int amount) {
 		this.amount = amount;
 	}
 
@@ -103,20 +75,20 @@ public class MoneyTransfer {
 		this.currency = currency;
 	}
 
-	public boolean isUrgent() {
+	public boolean getIsUrgent() {
 		return isUrgent;
 	}
 
-	public void setUrgent(boolean isUrgent) {
-		this.isUrgent = isUrgent;
+	public void setIsUrgent(boolean isUrgent) {
+		isUrgent = isUrgent;
 	}
 
-	public boolean isInstant() {
+	public boolean getIsInstant() {
 		return isInstant;
 	}
 
-	public void setInstant(boolean isInstant) {
-		this.isInstant = isInstant;
+	public void setIsInstant(boolean isInstant) {
+		isInstant = isInstant;
 	}
 
 	public String getFeeType() {
@@ -135,20 +107,11 @@ public class MoneyTransfer {
 		this.feeAccountId = feeAccountId;
 	}
 
-	public List<TaxRelief> getTaxRelief() {
+	public TaxRelief getTaxRelief() {
 		return taxRelief;
 	}
 
-	public void setTaxRelief(List<TaxRelief> taxRelief) {
+	public void setTaxRelief(TaxRelief taxRelief) {
 		this.taxRelief = taxRelief;
 	}
-
-	@Override
-	public String toString() {
-		return "MoneyTransfer [xTimeZone=" + xTimeZone + ", accountId=" + accountId + ", creditor=" + creditor3
-				+ ", executionDate=" + executionDate + ", uri=" + uri + ", description=" + description + ", amount="
-				+ amount + ", currency=" + currency + ", isUrgent=" + isUrgent + ", isInstant=" + isInstant
-				+ ", feeType=" + feeType + ", feeAccountId=" + feeAccountId + ", taxRelief=" + taxRelief + "]";
-	}
-
 }

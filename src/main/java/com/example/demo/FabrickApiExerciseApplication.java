@@ -7,10 +7,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
-public class FabrickTest1Application {
+public class FabrickApiExerciseApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FabrickTest1Application.class, args);
+		SpringApplication.run(FabrickApiExerciseApplication.class, args);
 	}
 
 	@Bean

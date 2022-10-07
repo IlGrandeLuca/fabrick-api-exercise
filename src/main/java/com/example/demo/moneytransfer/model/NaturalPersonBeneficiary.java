@@ -9,21 +9,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
-@Entity
 public class NaturalPersonBeneficiary {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "natural_id")
-	private int id;
-	@NotNull
 	private String fiscalCode1;
 	private String fiscalCode2;
 	private String fiscalCode3;
 	private String fiscalCode4;
 	private String fiscalCode5;
-	@OneToOne
-	private TaxRelief taxRelief1;
 
 	public String getFiscalCode1() {
 		return fiscalCode1;
@@ -63,13 +55,6 @@ public class NaturalPersonBeneficiary {
 
 	public void setFiscalCode5(String fiscalCode5) {
 		this.fiscalCode5 = fiscalCode5;
-	}
-
-	@Override
-	public String toString() {
-		return "NaturalPersonBeneficiary [id=" + id + ", fiscalCode1=" + fiscalCode1 + ", fiscalCode2=" + fiscalCode2
-				+ ", fiscalCode3=" + fiscalCode3 + ", fiscalCode4=" + fiscalCode4 + ", fiscalCode5=" + fiscalCode5
-				+ "]";
 	}
 
 }

@@ -11,65 +11,29 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
-@Entity
 public class Creditor {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int creditorId;
-	@NotNull
 	private String name;
-	@NotNull
-	@OneToMany(mappedBy = "creditor1")
-	private List<Account> account;
-	@OneToMany(mappedBy = "creditor2")
-	private List<Address> address;
-	@OneToMany(mappedBy = "creditor3")
-	private List<MoneyTransfer> moneyTransfer;
-
-	public int getCreditorId() {
-		return creditorId;
-	}
-
-	public void setCreditorId(int creditorId) {
-		this.creditorId = creditorId;
-	}
-
+	private Account account;
+	private Address address;
 	public String getName() {
 		return name;
 	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	public List<Account> getAccount() {
+	public Account getAccount() {
 		return account;
 	}
-
-	public void setAccount(List<Account> account) {
+	public void setAccount(Account account) {
 		this.account = account;
 	}
-
-	public List<Address> getAddress() {
+	public Address getAddress() {
 		return address;
 	}
-
-	public void setAddress(List<Address> address) {
+	public void setAddress(Address address) {
 		this.address = address;
 	}
 
-	public List<MoneyTransfer> getMoneyTransfer() {
-		return moneyTransfer;
-	}
-
-	public void setMoneyTransfer(List<MoneyTransfer> moneyTransfer) {
-		this.moneyTransfer = moneyTransfer;
-	}
-
-	@Override
-	public String toString() {
-		return "Creditor [id=" + creditorId + ", name=" + name + ", account=" + account + ", address=" + address + "]";
-	}
 
 }

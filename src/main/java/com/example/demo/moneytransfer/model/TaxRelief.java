@@ -14,26 +14,14 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
-@Entity
 public class TaxRelief {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "taxrelief_id")
-	private int id;
 	private String taxReliefId;
-	@NotNull
 	private boolean isCondoUpgrade;
-	@NotNull
 	private String creditorFiscalCode;
-	@NotNull
 	private String beneficiaryType;
-	@OneToOne(mappedBy = "taxRelief1")
-	private NaturalPersonBeneficiary natural;
-	@OneToOne(mappedBy = "taxRelief2")
-	private LegalPersonBeneficiary legal;
-	@ManyToOne
-	private MoneyTransfer moneyTransfer;
+	private NaturalPersonBeneficiary naturalPersonBeneficiary;
+	private LegalPersonBeneficiary legalPersonBeneficiary;
 
 	public String getTaxReliefId() {
 		return taxReliefId;
@@ -43,11 +31,11 @@ public class TaxRelief {
 		this.taxReliefId = taxReliefId;
 	}
 
-	public boolean isCondoUpgrade() {
+	public boolean getIsCondoUpgrade() {
 		return isCondoUpgrade;
 	}
 
-	public void setCondoUpgrade(boolean isCondoUpgrade) {
+	public void setIsCondoUpgrade(boolean isCondoUpgrade) {
 		this.isCondoUpgrade = isCondoUpgrade;
 	}
 
@@ -67,43 +55,19 @@ public class TaxRelief {
 		this.beneficiaryType = beneficiaryType;
 	}
 
-	public int getId() {
-		return id;
+	public NaturalPersonBeneficiary getNaturalPersonBeneficiary() {
+		return naturalPersonBeneficiary;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setNaturalPersonBeneficiary(NaturalPersonBeneficiary naturalPersonBeneficiary) {
+		this.naturalPersonBeneficiary = naturalPersonBeneficiary;
 	}
 
-	public NaturalPersonBeneficiary getNatural() {
-		return natural;
+	public LegalPersonBeneficiary getLegalPersonBeneficiary() {
+		return legalPersonBeneficiary;
 	}
 
-	public void setNatural(NaturalPersonBeneficiary natural) {
-		this.natural = natural;
+	public void setLegalPersonBeneficiary(LegalPersonBeneficiary legalPersonBeneficiary) {
+		this.legalPersonBeneficiary = legalPersonBeneficiary;
 	}
-
-	public LegalPersonBeneficiary getLegal() {
-		return legal;
-	}
-
-	public void setLegal(LegalPersonBeneficiary legal) {
-		this.legal = legal;
-	}
-
-	public MoneyTransfer getMoneyTransfer() {
-		return moneyTransfer;
-	}
-
-	public void setMoneyTransfer(MoneyTransfer moneyTransfer) {
-		this.moneyTransfer = moneyTransfer;
-	}
-
-	@Override
-	public String toString() {
-		return "TaxRelief [taxReliefId=" + taxReliefId + ", isCondoUpgrade=" + isCondoUpgrade + ", creditorFiscalCode="
-				+ creditorFiscalCode + ", beneficiaryType=" + beneficiaryType + ", naturalPersonBeneficiary=" + natural
-				+ ", legalPersonBeneficiary=" + legal + "]";
-	}
-
 }

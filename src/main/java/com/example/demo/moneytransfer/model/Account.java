@@ -9,17 +9,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
-@Entity
 public class Account {
 
-	@Id
-	@NotNull
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
 	private String accountCode;
 	private String bicCode;
-	@ManyToOne
-	private Creditor creditor1;
 
 	public String getAccountCode() {
 		return accountCode;
@@ -35,19 +28,6 @@ public class Account {
 
 	public void setBicCode(String bicCode) {
 		this.bicCode = bicCode;
-	}
-
-	public Creditor getCreditor() {
-		return creditor1;
-	}
-
-	public void setCreditor(Creditor creditor) {
-		this.creditor1 = creditor;
-	}
-
-	@Override
-	public String toString() {
-		return "Account [accountCode=" + accountCode + ", bicCode=" + bicCode + "]";
 	}
 
 }

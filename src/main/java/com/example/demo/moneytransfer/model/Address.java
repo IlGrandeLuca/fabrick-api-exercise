@@ -7,18 +7,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-@Entity
 public class Address {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "address_id")
-	private int id;
 	private String address;
 	private String city;
 	private String countryCode;
-	@ManyToOne
-	private Creditor creditor2;
 
 	public String getAddress() {
 		return address;
@@ -42,11 +35,6 @@ public class Address {
 
 	public void setCountryCode(String countryCode) {
 		this.countryCode = countryCode;
-	}
-
-	@Override
-	public String toString() {
-		return "Address [id=" + id + ", address=" + address + ", city=" + city + ", countryCode=" + countryCode + "]";
 	}
 
 }
