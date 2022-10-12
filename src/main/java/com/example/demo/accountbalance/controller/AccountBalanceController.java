@@ -1,10 +1,8 @@
 package com.example.demo.accountbalance.controller;
 
+import com.example.demo.utils.CommonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,19 +22,12 @@ public class AccountBalanceController {
 	private RestTemplate restTemplate;
 
 	@RequestMapping(value = "/{accountId}", method = RequestMethod.GET)
-	public String getAccountBalanceFromApiString(@PathVariable("accountId") String accountId) {
-		HttpHeaders headers = new HttpHeaders(); // set `content-type` header
-		headers.add("Auth-Schema", "S2S");
-		headers.add("apikey", APIKEY);
-		HttpEntity request = new HttpEntity(headers);
-		try {
-			ResponseEntity<String> response = restTemplate.exchange(URL + accountId + "/balance", HttpMethod.GET, request,
-					String.class);
-			return response.getBody();
-		} catch (Exception e) {
-			return "Account not found...";
-		}
-
+	public ResponseEntity getAccountBalanceFromApiString(@PathVariable("accountId") String accountId) {
+		ResponseEntity<String> response = CommonUtils.invokeApi(accountId, "balance", HttpMethod.GET, restTemplate);
+		if (response.getStatusCode() != HttpStatus.OK)
+			return CommonUtils.checkError(response);
+		else
+			return response;
 	}
 
 }
